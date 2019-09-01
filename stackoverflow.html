@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Stackoverflow Question</title>
+		<style>
+			#main-cont {
+				min-width:633px;
+				margin:auto;
+				width:633px;
+			}
+			#container {
+				position:relative;
+				background: url("src/css.png");
+				background-repeat: no-repeat;
+				width:633px;
+				height:462px;
+				
+			}
+			#inner {
+				position:absolute;
+				left:15px;
+				top:48px;
+			}
+			.box {
+				position:relative;
+				display:block;
+				float:left;
+				background-color:#c9d5e0;
+				height:170px;
+				width:160px;
+				margin:5px 0 0 5px;
+				box-sizing:border-box;
+				text-align:center;
+				box-sizing:border-box;
+				padding:0;
+				  
+			}
+			.box p {
+				position:absolute;
+				color:#323232;
+				left:0;
+				right:0;
+				bottom:35px;
+				margin:0;
+				font-size:20px;
+				display:inline-block;
+				font-family:Consolas;
+				padding-left:5px;
+				padding-right:5px;
+			}
+			h2 {
+				display:inline-block;
+				margin-left:13px;
+				margin-bottom:0;
+			}
+			h2 + p{
+				font-size:18px;
+				margin-left:13px;
+				background-color:pink;
+				display:inline-block;
+			}
+			h2 span {
+				font-weight: normal;
+				color:#6b6b6b;
+				font-size:15px;
+				
+			}
+			h1 {
+				letter-spacing:0.6em;
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>MY STACKOVERFLOW QUESTION</h1>
+			<div id="main-cont">
+				<h2>CSS Output <span>(Not JavaFX CSS)</span></h2>
+				<p style="padding-left: 10px;padding-right: 10px;">I want the result like this.</p>
+				<div id="container" style="margin:auto;">
+					<div id="inner">
+						<div class="box"><p>In Busy: 4</p></div>
+						<div class="box"><p>In Use: 10</p></div>
+						<div class="box"><p>Waiting Now: 5</p></div>
+						<div class="box"><p>Total Time: 10:22:33</p></div>
+					</div>
+				</div>
+				<h2>Scene Builder Output</h2>
+				<p>The result: It clips text's overflow instead of making it multi lined like above in CSS.</p>
+				<img style="margin:auto;display:block;" src="src/scene-builder.png">
+				<h2>Scene Builder:Label</h2>
+				<p>JavaFx Label options:</p>
+				<img style="margin:auto;display:block;margin-left:13px;" src="src/properties-layouts.png">
+			</div>
+		</main>
+	</body>
+</html>
