@@ -14,7 +14,7 @@
 				background-repeat: no-repeat;
 				width:633px;
 				height:462px;
-				
+				cursor:text;
 			}
 			#inner {
 				position:absolute;
@@ -69,6 +69,24 @@
 				letter-spacing:0.6em;
 				text-align:center;
 			}
+			pre {
+				white-space: pre-wrap;
+			}
+			.code-class {
+				cursor:text;
+				margin-left:5px;
+				width:100%;
+				background-color:#f2f2f2;
+			}
+			a {
+				font-size:13px;
+				color:#858585;
+				margin-left:13px;
+				text-decoration:none;
+			}
+			a:hover{
+				color:#333333;
+			}
 		</style>
 	</head>
 	<body>
@@ -85,13 +103,143 @@
 						<div class="box"><p>Total Time: 10:22:33</p></div>
 					</div>
 				</div>
+				<a href="#code1">see code</a></br>
 				<h2>Scene Builder Output</h2>
 				<p>The result: It clips text's overflow instead of making it multi lined like above in CSS.</p>
 				<img style="margin:auto;display:block;" src="src/scene-builder.png">
+				<a href="#code2">see code</a></br>
 				<h2>Scene Builder:Label</h2>
 				<p>JavaFx Label options:</p>
 				<img style="margin:auto;display:block;margin-left:13px;" src="src/properties-layouts.png">
 			</div>
+			
+			<h3 id="code1">Web:CSS</h3>
+			<div class="code-class"><pre><code>&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="utf8"&gt;
+		&lt;style&gt;
+			.box {
+				position:relative;
+				display:block;
+				float:left;
+				background-color:#c9d5e0;
+				height:170px;
+				width:160px;
+				margin:5px 0 0 5px;
+				box-sizing:border-box;
+				text-align:center;
+				box-sizing:border-box;
+				padding:0;
+				  
+			}
+			.box p {
+				position:absolute;
+				color:#323232;
+				left:0;
+				right:0;
+				bottom:35px;
+				margin:0;
+				font-size:20px;
+				display:inline-block;
+				font-family:Consolas;
+				padding-left:5px;
+				padding-right:5px;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div class="box"&gt;&lt;p&gt;In Busy: 4&lt;/p&gt;&lt;/div&gt;
+		&lt;div class="box"&gt;&lt;p&gt;In Use: 10&lt;/p&gt;&lt;/div&gt;
+		&lt;div class="box"&gt;&lt;p&gt;Waiting Now: 5&lt;/p&gt;&lt;/div&gt;
+		&lt;div class="box"&gt;&lt;p&gt;Total Time: 10:22:33&lt;/p&gt;&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+			</hr>
+			<h3 id="code2">FXML code:</h3>
+			<div class="code-class"><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;?import javafx.geometry.*?&gt;
+&lt;?import javafx.scene.text.*?&gt;
+&lt;?import javafx.scene.shape.*?&gt;
+&lt;?import javafx.scene.control.*?&gt;
+&lt;?import javafx.scene.image.*?&gt;
+&lt;?import java.lang.*?&gt;
+&lt;?import javafx.scene.layout.*?&gt;
+
+&lt;FlowPane prefHeight="400.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.ui.Controller"&gt;
+   &lt;children&gt;
+      &lt;AnchorPane prefHeight="170.0" prefWidth="160.0"&gt;
+         &lt;children&gt;
+            &lt;Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" maxHeight="170.0" maxWidth="150.0" text="In Busy: 4" textAlignment="CENTER" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"&gt;
+               &lt;font&gt;
+                  &lt;Font name="Consolas" size="20.0" /&gt;
+               &lt;/font&gt;
+               &lt;padding&gt;
+                  &lt;Insets left="5.0" right="5.0" /&gt;
+               &lt;/padding&gt;
+            &lt;/Label&gt;
+         &lt;/children&gt;
+         &lt;FlowPane.margin&gt;
+            &lt;Insets left="5.0" top="5.0" /&gt;
+         &lt;/FlowPane.margin&gt;
+      &lt;/AnchorPane&gt;
+      &lt;AnchorPane prefHeight="170.0" prefWidth="160.0"&gt;
+         &lt;children&gt;
+            &lt;Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" maxHeight="170.0" maxWidth="150.0" text="In Use: 10" textAlignment="CENTER" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"&gt;
+               &lt;font&gt;
+                  &lt;Font name="Consolas" size="20.0" /&gt;
+               &lt;/font&gt;
+               &lt;padding&gt;
+                  &lt;Insets left="5.0" right="5.0" /&gt;
+               &lt;/padding&gt;
+            &lt;/Label&gt;
+         &lt;/children&gt;
+         &lt;FlowPane.margin&gt;
+            &lt;Insets left="5.0" top="5.0" /&gt;
+         &lt;/FlowPane.margin&gt;
+      &lt;/AnchorPane&gt;
+      &lt;AnchorPane prefHeight="170.0" prefWidth="160.0"&gt;
+         &lt;children&gt;
+            &lt;Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" maxHeight="170.0" maxWidth="150.0" text="Waiting Now: 5" textAlignment="CENTER" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"&gt;
+               &lt;font&gt;
+                  &lt;Font name="Consolas" size="20.0" /&gt;
+               &lt;/font&gt;
+               &lt;padding&gt;
+                  &lt;Insets left="5.0" right="5.0" /&gt;
+               &lt;/padding&gt;
+            &lt;/Label&gt;
+         &lt;/children&gt;
+         &lt;FlowPane.margin&gt;
+            &lt;Insets left="5.0" top="5.0" /&gt;
+         &lt;/FlowPane.margin&gt;
+      &lt;/AnchorPane&gt;
+      &lt;AnchorPane prefHeight="170.0" prefWidth="160.0"&gt;
+         &lt;children&gt;
+            &lt;Label fx:id="last" alignment="BOTTOM_CENTER" contentDisplay="CENTER" maxHeight="170.0" maxWidth="150.0" text="Total Time: 10:22:33" textAlignment="CENTER" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"&gt;
+               &lt;font&gt;
+                  &lt;Font name="Consolas" size="20.0" /&gt;
+               &lt;/font&gt;
+               &lt;padding&gt;
+                  &lt;Insets left="5.0" right="5.0" /&gt;
+               &lt;/padding&gt;
+            &lt;/Label&gt;
+         &lt;/children&gt;
+         &lt;FlowPane.margin&gt;
+            &lt;Insets left="5.0" top="5.0" /&gt;
+         &lt;/FlowPane.margin&gt;
+      &lt;/AnchorPane&gt;
+   &lt;/children&gt;
+&lt;/FlowPane&gt;</code></pre></div>
+			
+			<h3>JavaFX:CSS</h3>
+			<div class="code-class"><pre><code>.root AnchorPane{
+	-fx-background-color: #C9D5E0;
+}
+Label {
+	-fx-white-space: nowrap;
+	-fx-word-wrap: break-word;
+}</code></pre></div>
 		</main>
 	</body>
 </html>
