@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Ders Programı</title>
+		<style>
+			.sol {
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				width: 15%;
+				z-index: 30;
+				/*background-color:pink;*/
+			}
+			.sag {
+				position: absolute;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 15%;
+				z-index: 50;
+				/*background-color:yellow;*/
+			}
+			p {
+				font-size:20vw;
+				border-size: 20px;
+				margin-bottom: 5 vh;
+				margin-top: 0;
+				/*padding:0;*/
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<p id="gozel" style="">&nbsp;</p>
+			<p id="ggun" style="">Yüklenemedi.</p>
+			<div class="sol" onclick="tikla(event, -1)"></div>
+			<div class="sag" onclick="tikla(event, 1)"></div>
+			
+			<script>
+				var d = new Date();
+				var hgunler = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+				var bugun = d.getDay();
+				var gun = bugun;
+				var saat = d.getHours();
+				if (saat >= 20)	gun += 1;
+				if (gun > 5 || gun == 0) gun = 1;
+				function print(index){
+					index = (index + 7 ) % 7;
+					gun = index;
+					var ozel = document.getElementById("gozel");
+					if(index == bugun){
+						ozel.innerHTML = 'Bugün';
+					}else if(index == (bugun + 1) % 7){
+						ozel.innerHTML = 'Yarın';
+					}else{
+						ozel.innerHTML = '&nbsp;';
+					}
+					document.getElementById("ggun").innerHTML = hgunler[index];
+				}
+				function tikla(event, x){
+					gun += x;
+					print(gun);
+				}
+				console.log(gun);
+				console.log(bugun);
+				print(gun);
+			</script>
+		</main>
+	</body>
+</html>
