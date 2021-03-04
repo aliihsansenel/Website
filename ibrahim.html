@@ -75,7 +75,7 @@
 						dersElement = document.createElement('p');
 						ders = hafta[index - 1][i];
 						console.log(hafta[index - 1][i]);
-						dersElement.innerHTML = ders.title + '&nbsp;' + ders.hour + '.' + ders.min;
+						dersElement.innerHTML = ders.title + '&nbsp;' + doubleFormat(ders.hour) + '.' + doubleFormat(ders.min);
 						dersler.appendChild(dersElement);
 					} 
 				}
@@ -83,28 +83,32 @@
 					gun += x;
 					print(gun);
 				}
+				function doubleFormat(x){
+					df = '' + x;
+					if(x < 10)
+						df = '0' + df;
+					return df;
+				}
 				//Ders Programının içeriği ve ekrana basılması
 				var pzt = [
-						{ title: 'Anten', hour: 10, min: 00 },
-						{ title: 'Dalga', hour: 13, min: 00 },
-						{ title: 'Mikro', hour: 15, min: 30 }
+						{ title: 'ED 1', hour: 10, min: 00 },
+						{ title: 'İş Hayatı', hour: 16, min: 00 },
 					]
 				var sal = [
-						{ title: 'Anten', hour: 12, min: 00 },
-						{ title: 'Mikro', hour: 14, min: 00 }
+						{ title: 'Hab Lab', hour: 9, min: 00 },
+						{ title: 'Mikrodalga Lab', hour: 11, min: 00 },
+						{ title: 'Anten', hour: 13, min: 00 },
+						{ title: 'Dalga', hour: 16, min: 00 }
 					]
 				var cars = [
-						{ title: 'İşaret', hour: 10, min: 00 },
-						{ title: 'Dalga', hour: 15, min: 30 }
+						{ title: 'Oto Kontrol / ED1', hour: 9, min: 00 },
+						{ title: 'Hab 2', hour: 13, min: 00 },
 					]
 				var pers = [
-						{ title: 'Anten', hour: 10, min: 00 },
-						{ title: 'Hab 2', hour: 12, min: 00 },
-						{ title: 'Mikro', hour: 15, min: 00 }
+						{ title: 'Dalga', hour: 10, min: 00 },
 					]
 				var cum = [
-						{ title: 'Dalga', hour: 9, min: 00 },
-						{ title: 'Mikro', hour: 14, min: 30 }
+						{ title: ' ED 2 LAB', hour: 9, min: 00 }
 					]
 				hafta = [pzt, sal, cars, pers, cum];
 				dersler = document.getElementById('dersler');
