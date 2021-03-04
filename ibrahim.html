@@ -21,11 +21,20 @@
 				z-index: 50;
 				/*background-color:yellow;*/
 			}
-			p {
+			
+			#dersler p {
+				text-align: center;
+				font-size:10vw;
+				/*border: 1px;
+				margin-bottom: 1 vh;
+				margin-top: 0;*/
+				/*padding:0;*/
+			}
+			#gozel, #ggun {
 				font-size:20vw;
-				border-size: 20px;
-				margin-bottom: 5 vh;
-				margin-top: 0;
+				/*border: 1px;
+				margin-bottom: 3 vh;
+				margin-top: 0;*/
 				/*padding:0;*/
 			}
 		</style>
@@ -34,6 +43,7 @@
 		<main>
 			<p id="gozel" style="">&nbsp;</p>
 			<p id="ggun" style="">Yüklenemedi.</p>
+			<div id="dersler"></div>
 			<div class="sol" onclick="tikla(event, -1)"></div>
 			<div class="sag" onclick="tikla(event, 1)"></div>
 			
@@ -57,11 +67,48 @@
 						ozel.innerHTML = '&nbsp;';
 					}
 					document.getElementById("ggun").innerHTML = hgunler[index];
+					
+					var i;
+					dersler.innerHTML = '';
+					for (i = 0; i < hafta[index - 1].length; i++) {
+						
+						dersElement = document.createElement('p');
+						ders = hafta[index - 1][i];
+						console.log(hafta[index - 1][i]);
+						dersElement.innerHTML = ders.title + '&nbsp;' + ders.hour + '.' + ders.min;
+						dersler.appendChild(dersElement);
+					} 
 				}
 				function tikla(event, x){
 					gun += x;
 					print(gun);
 				}
+				//Ders Programının içeriği ve ekrana basılması
+				var pzt = [
+						{ title: 'Anten', hour: 10, min: 00 },
+						{ title: 'Dalga', hour: 13, min: 00 },
+						{ title: 'Mikro', hour: 15, min: 30 }
+					]
+				var sal = [
+						{ title: 'Anten', hour: 12, min: 00 },
+						{ title: 'Mikro', hour: 14, min: 00 }
+					]
+				var cars = [
+						{ title: 'İşaret', hour: 10, min: 00 },
+						{ title: 'Dalga', hour: 15, min: 30 }
+					]
+				var pers = [
+						{ title: 'Anten', hour: 10, min: 00 },
+						{ title: 'Hab 2', hour: 12, min: 00 },
+						{ title: 'Mikro', hour: 15, min: 00 }
+					]
+				var cum = [
+						{ title: 'Dalga', hour: 9, min: 00 },
+						{ title: 'Mikro', hour: 14, min: 30 }
+					]
+				hafta = [pzt, sal, cars, pers, cum];
+				dersler = document.getElementById('dersler');
+				
 				console.log(gun);
 				console.log(bugun);
 				print(gun);
