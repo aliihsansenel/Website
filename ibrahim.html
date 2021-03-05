@@ -37,6 +37,7 @@
 				margin-top: 0;*/
 				/*padding:0;*/
 			}
+			.gri {color:#4a4848}
 		</style>
 	</head>
 	<body>
@@ -75,7 +76,8 @@
 						dersElement = document.createElement('p');
 						ders = hafta[index - 1][i];
 						console.log(hafta[index - 1][i]);
-						dersElement.innerHTML = ders.title + '&nbsp;' + doubleFormat(ders.hour) + '.' + doubleFormat(ders.min);
+						dersElement.innerHTML = '<span class="gri">' + ders.title + '</span>' + ' ' 
+								+ doubleFormat(ders.hour) + '.' + doubleFormat(ders.min) + '<span class="gri">, ' + ders.span + '</span>'
 						dersler.appendChild(dersElement);
 					} 
 				}
@@ -91,24 +93,24 @@
 				}
 				//Ders Programının içeriği ve ekrana basılması
 				var pzt = [
-						{ title: 'ED 1', hour: 10, min: 00 },
-						{ title: 'İş Hayatı', hour: 16, min: 00 },
+						{ title: 'ED 1', hour: 10, min: 00, span: 2},
+						{ title: 'İş Hayatı', hour: 16, min: 00, span: 2 },
 					]
 				var sal = [
-						{ title: 'Hab Lab', hour: 9, min: 00 },
-						{ title: 'Mikrodalga Lab', hour: 11, min: 00 },
-						{ title: 'Anten', hour: 13, min: 00 },
-						{ title: 'Dalga', hour: 16, min: 00 }
+						{ title: 'Hab Lab', hour: 9, min: 00, span: 2 },
+						{ title: 'Mikrodalga Lab', hour: 11, min: 00, span: 2 },
+						{ title: 'Anten', hour: 13, min: 00, span: 3 },
+						{ title: 'Dalga', hour: 16, min: 00, span: 2 }
 					]
 				var cars = [
-						{ title: 'Oto Kontrol / ED1', hour: 9, min: 00 },
-						{ title: 'Hab 2', hour: 13, min: 00 },
+						{ title: 'Oto Kontrol / ED1', hour: 9, min: 00, span: 3 },
+						{ title: 'Hab 2', hour: 13, min: 00, span: 3 },
 					]
 				var pers = [
-						{ title: 'Dalga', hour: 10, min: 00 },
+						{ title: 'Dalga', hour: 10, min: 00, span: 2 },
 					]
 				var cum = [
-						{ title: ' ED 2 LAB', hour: 9, min: 00 }
+						{ title: ' ED 2 LAB', hour: 9, min: 00, span: 3 }
 					]
 				hafta = [pzt, sal, cars, pers, cum];
 				dersler = document.getElementById('dersler');
