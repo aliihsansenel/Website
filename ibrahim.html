@@ -77,7 +77,7 @@
 						ders = hafta[index - 1][i];
 						console.log(hafta[index - 1][i]);
 						dersElement.innerHTML = '<span class="gri">' + ders.title + '</span>' + ' ' 
-								+ doubleFormat(ders.hour) + '.' + doubleFormat(ders.min) + '<span class="gri">, ' + ders.span + '</span>'
+								+ doubleFormat(ders.hour) + '.' + doubleFormat(ders.min) + '<span class="gri"> | ' + ders.span + '</span>'
 						dersler.appendChild(dersElement);
 					} 
 				}
