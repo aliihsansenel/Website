@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Ders Programı</title>
+		<style>
+			.sol {
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				width: 15%;
+				z-index: 30;
+				/*background-color:pink;*/
+			}
+			.sag {
+				position: absolute;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 15%;
+				z-index: 50;
+				/*background-color:yellow;*/
+			}
+			
+			#dersler p {
+				text-align: center;
+				font-size:10vw;
+				/*border: 1px;
+				margin-bottom: 1 vh;
+				margin-top: 0;*/
+				/*padding:0;*/
+			}
+			#gozel, #ggun {
+				font-size:20vw;
+				/*border: 1px;
+				margin-bottom: 3 vh;
+				margin-top: 0;*/
+				/*padding:0;*/
+			}
+			.gri {color:#4a4848}
+		</style>
+	</head>
+	<body>
+		<main>
+			<p id="gozel" style="">&nbsp;</p>
+			<p id="ggun" style="">Yüklenemedi.</p>
+			<div id="dersler"></div>
+			<div class="sol" onclick="tikla(event, -1)"></div>
+			<div class="sag" onclick="tikla(event, 1)"></div>
+			
+			<script>
+				var d = new Date();
+				var hgunler = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+				var bugun = d.getDay();
+				var gun = bugun;
+				var saat = d.getHours();
+				if (saat >= 17)	gun += 1;
+				if (gun > 5 || gun == 0) gun = 1;
+				function print(index){
+					index = (index + 7 ) % 7;
+					gun = index;
+					var ozel = document.getElementById("gozel");
+					if(index == bugun){
+						ozel.innerHTML = 'Bugün';
+					}else if(index == (bugun + 1) % 7){
+						ozel.innerHTML = 'Yarın';
+					}else{
+						ozel.innerHTML = '&nbsp;';
+					}
+					document.getElementById("ggun").innerHTML = hgunler[index];
+					
+					var i;
+					dersler.innerHTML = '';
+					for (i = 0; i < hafta[index - 1].length; i++) {
+						
+						dersElement = document.createElement('p');
+						ders = hafta[index - 1][i];
+						console.log(hafta[index - 1][i]);
+						dersElement.innerHTML = '<span class="gri">' + ders.title + '</span>' + ' ' 
+								+ doubleFormat(ders.hour) + '.' + doubleFormat(ders.min) + '<span class="gri"> &#124; ' + ders.span + '</span>'
+						dersler.appendChild(dersElement);
+					} 
+				}
+				function tikla(event, x){
+					gun += x;
+					print(gun);
+				}
+				function doubleFormat(x){
+					df = '' + x;
+					if(x < 10)
+						df = '0' + df;
+					return df;
+				}
+				//Ders Programının içeriği ve ekrana basılması
+				var pzt = [
+						{ title: 'Proje Yönetimi ve İş Güvenliği ', hour: 9, min: 00, span: 2},
+						{ title: 'Bilişim Hukuku ', hour: 14, min: 00, span: 3 },
+					]
+				var sal = [
+						{ title: 'Satranç', hour: 8, min: 00, span: 2 },
+						{ title: 'Nöron', hour: 9, min: 00, span: 3 },
+						{ title: 'Yazılım Tasarım', hour: 14, min: 00, span: 3 },
+					]
+				var cars = [
+						{ title: 'Bitirme', hour: 20, min: 30, span: 1 },
+					]
+				var pers = [
+						{ title: 'Entegre ', hour: 14, min: 00, span: 3 },
+					]
+				var cum = [
+						
+					]
+				hafta = [pzt, sal, cars, pers, cum];
+				dersler = document.getElementById('dersler');
+				
+				console.log(gun);
+				console.log(bugun);
+				print(gun);
+			</script>
+		</main>
+	</body>
+</html>
