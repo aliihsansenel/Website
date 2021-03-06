@@ -113,7 +113,20 @@
 					if(x < 10)
 						df = '0' + df;
 					return df;
-				}
+				}/* TODO
+				function currentAndNext(){
+					d = new Date();
+					bugun = d.getDay();
+					gun = bugun;
+					saat = d.getHours();
+					if (saat >= 20)	gun += 1;
+					if (gun > 5 || gun == 0) gun = 1;
+					gun = (gun - 1) % 7;
+					
+					
+					
+					
+				}*/
 				//Ders Programının içeriği ve ekrana basılması
 				var pzt = [
 						{ title: 'ED 1', hour: 10, min: 00, span: 2},
@@ -126,7 +139,8 @@
 						{ title: 'Dalga', hour: 16, min: 00, span: 2 }
 					]
 				var cars = [
-						{ title: 'Oto Kontrol / ED1', hour: 9, min: 00, span: 3 },
+						{ title: 'Oto Kontrol', hour: 9, min: 00, span: 3 },
+						{ title: 'ED1', hour: 10, min: 00, span: 2 },
 						{ title: 'Hab 2', hour: 13, min: 00, span: 3 },
 					]
 				var pers = [
