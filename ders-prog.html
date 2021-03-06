@@ -22,19 +22,33 @@
 				/*background-color:yellow;*/
 			}
 			
-			#dersler p {
+			#tablo, td {
+				border: 0px solid black;
+				//display: none;
+				width: 92%;
+				margin-left: auto;
+				margin-right: auto;
+				align: center;
 				text-align: center;
+				vertical-align: top;
 				font-size:10vw;
 				/*border: 1px;
 				margin-bottom: 1 vh;
 				margin-top: 0;*/
 				/*padding:0;*/
 			}
-			#gozel, #ggun {
-				font-size:20vw;
+			#gozel{
+			color:#e6c585;
+				font-size:12vw;
+				margin-bottom: 1vh;
 				/*border: 1px;
-				margin-bottom: 3 vh;
 				margin-top: 0;*/
+				/*padding:0;*/
+			}
+			#ggun {
+				font-size:20vw;
+				margin-top: 0;
+				/*border: 1px;*/
 				/*padding:0;*/
 			}
 			.gri {color:#4a4848}
@@ -44,7 +58,7 @@
 		<main>
 			<p id="gozel" style="">&nbsp;</p>
 			<p id="ggun" style="">Yüklenemedi.</p>
-			<div id="dersler"></div>
+			<div id="dersler"><table id="tablo"></table></div>
 			<div class="sol" onclick="tikla(event, -1)"></div>
 			<div class="sag" onclick="tikla(event, 1)"></div>
 			
@@ -54,9 +68,11 @@
 				var bugun = d.getDay();
 				var gun = bugun;
 				var saat = d.getHours();
-				if (saat >= 17)	gun += 1;
+				if (saat >= 20)	gun += 1;
 				if (gun > 5 || gun == 0) gun = 1;
+				tablo = document.getElementById('tablo');
 				function print(index){
+					
 					index = (index + 7 ) % 7;
 					gun = index;
 					var ozel = document.getElementById("gozel");
@@ -70,16 +86,23 @@
 					document.getElementById("ggun").innerHTML = hgunler[index];
 					
 					var i;
-					dersler.innerHTML = '';
-					for (i = 0; i < hafta[index - 1].length; i++) {
+					tablo.innerHTML = '';
+					tablo.style.display = "table";
+					
+					index = (index + 6) % 7;
+					console.log('index: ' + index);
+					for (i = 0; i < hafta[index].length; i++) {
+						ders = hafta[index][i];
+						//console.log(hafta[index][i]);
 						
-						dersElement = document.createElement('p');
-						ders = hafta[index - 1][i];
-						console.log(hafta[index - 1][i]);
-						dersElement.innerHTML = '<span class="gri">' + ders.title + '</span>' + ' ' 
-								+ doubleFormat(ders.hour) + '.' + doubleFormat(ders.min) + '<span class="gri"> &#124; ' + ders.span + '</span>'
-						dersler.appendChild(dersElement);
-					} 
+						var row = tablo.insertRow(-1);
+						var cell0 = row.insertCell(0);
+						var cell1 = row.insertCell(1);
+						
+						cell0.style.textAlign = 'left';
+						cell0.innerHTML = '<span class="gri">' + ders.title + '</span>';
+						cell1.innerHTML = doubleFormat(ders.hour) + '.' + doubleFormat(ders.min) + '<span class="gri">&nbsp;&#124;&nbsp;' + ders.span + '</span>';
+					}
 				}
 				function tikla(event, x){
 					gun += x;
@@ -93,7 +116,7 @@
 				}
 				//Ders Programının içeriği ve ekrana basılması
 				var pzt = [
-						{ title: 'Proj. Yön ve İG', hour: 9, min: 00, span: 2},
+						{ title: 'Proje Yönetimi ve İş Güvenliği ', hour: 9, min: 00, span: 2},
 						{ title: 'Bilişim Hukuku ', hour: 14, min: 00, span: 3 },
 					]
 				var sal = [
@@ -107,11 +130,10 @@
 				var pers = [
 						{ title: 'Entegre ', hour: 14, min: 00, span: 3 },
 					]
-				var cum = [
-						
-					]
-				hafta = [pzt, sal, cars, pers, cum];
-				dersler = document.getElementById('dersler');
+				var cum = []
+				var cts = [];
+				var pzr = [];
+				hafta = [pzt, sal, cars, pers, cum, cts, pzr];
 				
 				console.log(gun);
 				console.log(bugun);
